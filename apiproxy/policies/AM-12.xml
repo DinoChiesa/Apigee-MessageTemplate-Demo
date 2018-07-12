@@ -1,0 +1,11 @@
+<AssignMessage name='AM-12'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{xeger('[0-9]{12}')}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Value>xeger('[0-9]{12}')</Value>
+  </AssignVariable>
+</AssignMessage>

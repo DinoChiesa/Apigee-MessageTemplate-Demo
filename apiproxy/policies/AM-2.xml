@@ -1,0 +1,15 @@
+<AssignMessage name='AM-2'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>timeFormatString1</Name>
+    <Value>yyyyMMdd-HHmmss</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{timeFormatUTCMs(timeFormatString1,system.timestamp)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>timeFormatUTCMs({timeFormatString1},system.timestamp)</Template>
+  </AssignVariable>
+</AssignMessage>

@@ -1,0 +1,15 @@
+<AssignMessage name='AM-19'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>text_with_quotes</Name>
+    <Value>Shakespeare notes in his diary, "I am the poor man’s playwright."</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{escapeJSON(text_with_quotes)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>escapeJSON(text_with_quotes)</Template>
+  </AssignVariable>
+</AssignMessage>

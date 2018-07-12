@@ -1,0 +1,15 @@
+<AssignMessage name='AM-15'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>quick_brown_fox_text</Name>
+    <Value>The quick brown fox jumps over the lazy dog.</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{encodeBase64(quick_brown_fox_text)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>encodeBase64({quick_brown_fox_text})</Template>
+  </AssignVariable>
+</AssignMessage>

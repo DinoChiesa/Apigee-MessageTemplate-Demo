@@ -1,0 +1,11 @@
+<AssignMessage name='AM-14'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{messageid}|||{apiproxy.name}|||{system.timestamp}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Value>expand multiple variables in a template: {messageid}|||{apiproxy.name}|||{system.timestamp}</Value>
+  </AssignVariable>
+</AssignMessage>

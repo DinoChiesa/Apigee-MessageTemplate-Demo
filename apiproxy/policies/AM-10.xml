@@ -1,0 +1,19 @@
+<AssignMessage name='AM-10'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>zero</Name>
+    <Value>0</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>plus_1000</Name>
+    <Value>1000</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{randomLong(zero,plus_1000)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>randomLong({zero},{plus_1000})</Template>
+  </AssignVariable>
+</AssignMessage>

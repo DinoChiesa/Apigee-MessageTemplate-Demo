@@ -1,0 +1,149 @@
+<ProxyEndpoint name="endpoint1">
+  <Description>Proxy Endpoint 1</Description>
+  <HTTPProxyConnection>
+    <BasePath>/assignvariable-1</BasePath>
+    <Properties/>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+
+  <FaultRules/>
+
+  <PreFlow name="PreFlow">
+    <Request>
+    </Request>
+    <Response>
+      <Step>
+        <Name>AM-CleanResponseHeaders</Name>
+      </Step>
+    </Response>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request>
+    </Request>
+    <Response>
+    </Response>
+  </PostFlow>
+  <PostClientFlow name="PostFlow">
+    <Request>
+    </Request>
+    <Response>
+    </Response>
+  </PostClientFlow>
+
+  <Flows>
+
+    <Flow name="flow1">
+      <Request>
+        <Step>
+          <Condition>request.queryparam.t is null</Condition>
+          <Name>RF-BadRequest</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "1"</Condition>
+          <Name>AM-1</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "2"</Condition>
+          <Name>AM-2</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "3"</Condition>
+          <Name>AM-3</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "4"</Condition>
+          <Name>AM-4</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "5"</Condition>
+          <Name>AM-5</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "6"</Condition>
+          <Name>AM-6</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "7"</Condition>
+          <Name>AM-7</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "8"</Condition>
+          <Name>AM-8</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "9"</Condition>
+          <Name>AM-9</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "10"</Condition>
+          <Name>AM-10</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "11"</Condition>
+          <Name>AM-11</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "12"</Condition>
+          <Name>AM-12</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "13"</Condition>
+          <Name>AM-13</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "14"</Condition>
+          <Name>AM-14</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "15"</Condition>
+          <Name>AM-15</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "16"</Condition>
+          <Name>AM-16</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "17"</Condition>
+          <Name>AM-17</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "18"</Condition>
+          <Name>AM-18</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "19"</Condition>
+          <Name>AM-19</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "20"</Condition>
+          <Name>AM-20</Name>
+        </Step>
+        <Step>
+          <Condition>assigned = null</Condition>
+          <Name>RF-BadRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-Response</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/test") and (request.verb = "GET")</Condition>
+    </Flow>
+
+
+    <Flow name="unknown request">
+      <Request>
+        <Step>
+          <Name>RF-UnknownRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+      </Response>
+    </Flow>
+
+  </Flows>
+
+  <RouteRule name="NoRouteRule"/>
+
+</ProxyEndpoint>

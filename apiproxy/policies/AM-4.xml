@@ -1,0 +1,19 @@
+<AssignMessage name='AM-4'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>timestring</Name>
+    <Value>1531349564</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>myformat</Name>
+    <Value>MMMM d, yyyy</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{timeFormatUTC(myformat,timestring)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>timeFormatUTC({myformat},{timestring})</Template>
+  </AssignVariable>
+</AssignMessage>
