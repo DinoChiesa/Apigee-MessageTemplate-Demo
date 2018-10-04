@@ -1,15 +1,20 @@
-# Apigee Edge - AssignVariable with Templates and functions
+# Apigee Edge - Message Templates and functions
 
-This API proxy demonstrates how to use the new capability in the AssignMessage policy, specifically pertaining to AssignVariable.
+This API proxy demonstrates how to use the new capability in the Message Template within Apigee Edge, specifically the functions available within Message templates.
+
+[Message Templates](https://docs.apigee.com/api-platform/reference/message-template-intro) in Apigee Edge are used in numerous places - for the Payload within an AssignMessage policy, as well as in other elements.
+
+- Message Templates have been enhanced to support functions
+- the AssignMessage policy has now been enhanced to accept a template when assigning a value to a variable
 
 ## Disclaimer
 
 This example is not an official Google product, nor is it part of an official Google product.
 
-## Discussion
+## In More Detail
 
 The [Message Template](https://docs.apigee.com/api-platform/reference/message-template-intro) in Apigee Edge has recently been enhanced to support a number of static callable functions.
-Things like `substring()` or `sha256base64()`.
+Things like `substring()` or `sha256base64()`. The full list is in the documentation page.
 
 Shortly afterwards, Apigee extended the AssignMessage/AssignVariable to allow a Template element, which allows you to assign to a variable the result of a template. For example:
 
@@ -42,11 +47,10 @@ For example, you can evaluate a jsonpath expression:
 </AssignMessage>
 ```
 
-
 What the above does is:
-1. resolves the values of context variables variable1 and variable2
-2. applies the template and concatenates those, with an intervening dash
-3. assigns that to variable 'assigned'.
+1. resolves the values of context variables json_path_expression and json_value
+2. Evaluates the json path expression to the value.
+3. assigns the result of that to the variable 'assigned'.
 
 There are a number of other functions. Consult the documentation for the full list.
 
@@ -54,19 +58,19 @@ There are a number of other functions. Consult the documentation for the full li
 
 The attached proxy shows examples using these functions:
 
-* jsonPath
-* toUpperCase
-* replaceAll
-* encodeBase64
-* sha256Base64
-* sha256Hex
-* escapeXML11
-* escapeJSON
-* substring
-* createUuid
-* xeger
-* randomLong
-* timeFormatUTC,timeFormatUTCMs
+* [jsonPath](./apiproxy/policies/AM-20.xml)
+* [toUpperCase](./apiproxy/policies/AM-1.xml)
+* [replaceAll](./apiproxy/policies/AM-13.xml)
+* [encodeBase64](./apiproxy/policies/AM-15.xml)
+* [sha256Base64](./apiproxy/policies/AM-16.xml)
+* [sha256Hex](./apiproxy/policies/AM-17.xml)
+* [escapeXML11](./apiproxy/policies/AM-18.xml)
+* [escapeJSON](./apiproxy/policies/AM-19.xml)
+* [substring](./apiproxy/policies/AM-6.xml)
+* [createUuid](./apiproxy/policies/AM-11.xml)
+* [xeger](./apiproxy/policies/AM-12.xml)
+* [randomLong](./apiproxy/policies/AM-10.xml)
+* [timeFormatUTC](./apiproxy/policies/AM-4.xml),[timeFormatUTCMs](./apiproxy/policies/AM-3.xml)
 
 To use the proxy you need to deploy it into your environment.  You can do that by manually zipping up the apiproxy directory and deploying it with the UI, or use a command-line tool like
 [importAndDeploy.js](https://github.com/DinoChiesa/apigee-edge-js/blob/master/examples/importAndDeploy.js)

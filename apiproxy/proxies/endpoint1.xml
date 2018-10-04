@@ -1,7 +1,7 @@
 <ProxyEndpoint name="endpoint1">
   <Description>Proxy Endpoint 1</Description>
   <HTTPProxyConnection>
-    <BasePath>/assignvariable-1</BasePath>
+    <BasePath>/messagetemplate-functions</BasePath>
     <Properties/>
     <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
@@ -10,6 +10,9 @@
 
   <PreFlow name="PreFlow">
     <Request>
+        <Step>
+          <Name>AM-Bellwether</Name>
+        </Step>
     </Request>
     <Response>
       <Step>
@@ -34,6 +37,10 @@
 
     <Flow name="flow1">
       <Request>
+        <Step>
+          <Condition>bellwether = null</Condition>
+          <Name>RF-Unsupported</Name>
+        </Step>
         <Step>
           <Condition>request.queryparam.t is null</Condition>
           <Name>RF-BadRequest</Name>

@@ -1,0 +1,16 @@
+<RaiseFault name='RF-Unsupported'>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <FaultResponse>
+    <Set>
+      <Payload contentType='application/json'>{
+  "error" : {
+    "code" : 500.01,
+    "message" : "The server does not support Templates in AssignVariable."
+  }
+}
+</Payload>
+      <StatusCode>500</StatusCode>
+      <ReasonPhrase>Server Error</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+</RaiseFault>

@@ -1,0 +1,7 @@
+<AssignMessage name='AM-Bellwether'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>bellwether</Name>
+    <Template>{system.timestamp}</Template>
+  </AssignVariable>
+</AssignMessage>
