@@ -2,6 +2,9 @@
   <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
   <FaultResponse>
     <Set>
+      <Headers>
+        <Header name='system.uuid'>{system.uuid}</Header>
+      </Headers>
       <Payload contentType='application/json'>{
   "error" : {
     "code" : 404.01,

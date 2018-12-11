@@ -58,19 +58,26 @@ There are a number of other functions. Consult the documentation for the full li
 
 The attached proxy shows examples using these functions:
 
-* [jsonPath](./apiproxy/policies/AM-20.xml)
-* [toUpperCase](./apiproxy/policies/AM-1.xml)
-* [replaceAll](./apiproxy/policies/AM-13.xml)
-* [encodeBase64](./apiproxy/policies/AM-15.xml)
-* [sha256Base64](./apiproxy/policies/AM-16.xml)
-* [sha256Hex](./apiproxy/policies/AM-17.xml)
-* [escapeXML11](./apiproxy/policies/AM-18.xml)
-* [escapeJSON](./apiproxy/policies/AM-19.xml)
-* [substring](./apiproxy/policies/AM-6.xml)
-* [createUuid](./apiproxy/policies/AM-11.xml)
-* [xeger](./apiproxy/policies/AM-12.xml)
-* [randomLong](./apiproxy/policies/AM-10.xml)
-* [timeFormatUTC](./apiproxy/policies/AM-4.xml),[timeFormatUTCMs](./apiproxy/policies/AM-3.xml)
+* [toUpperCase](./apiproxy/policies/AM-01-toUpperCase.xml)
+* [toLowerCase](./apiproxy/policies/AM-02-toLowerCase.xml)
+* [substring](./apiproxy/policies/AM-06-substring.xml)
+* [createUuid](./apiproxy/policies/AM-11-createUuid.xml)
+* [xeger](./apiproxy/policies/AM-12-xeger.xml)
+* [replaceFirst](./apiproxy/policies/AM-13-replaceFirst.xml)
+* [replaceAll](./apiproxy/policies/AM-14-replaceAll.xml)
+* [encodeBase64](./apiproxy/policies/AM-15-encodeBase64.xml)
+* [decodeBase64](./apiproxy/policies/AM-16-decodeBase64.xml)
+* [md5Hex](./apiproxy/policies/AM-21-md5Hex.xml)
+* [sha256Hex](./apiproxy/policies/AM-22-sha256Hex.xml)
+* [md5Base64](./apiproxy/policies/AM-23-md5Base64.xml)
+* [sha256Base64](./apiproxy/policies/AM-24-sha256Base64.xml
+* [timeFormatUTCMs](./apiproxy/policies/AM-31-timeformat.xml),[timeFormatUTC](./apiproxy/policies/AM-33-timeformat.xml)
+* [randomLong](./apiproxy/policies/AM-41-randomLong.xml)
+* [escapeXML](./apiproxy/policies/AM-51-escapeXML.xml)
+* [escapeXML11](./apiproxy/policies/AM-52-escapeXML11.xml
+* [escapeJSON](./apiproxy/policies/AM-53-escapeJSON.xml)
+* [escapeHTML](./apiproxy/policies/AM-54-escapeHTML.xml)
+* [jsonPath](./apiproxy/policies/AM-81-jsonpath.xml)
 
 To use the proxy you need to deploy it into your environment.  You can do that by manually zipping up the apiproxy directory and deploying it with the UI, or use a command-line tool like
 [importAndDeploy.js](https://github.com/DinoChiesa/apigee-edge-js/blob/master/examples/importAndDeploy.js)
@@ -85,7 +92,8 @@ ENV=test
 curl -i https://$ORG-$ENV.apigee.net/assignvariable-1/test?t=1
 ```
 
-You can vary the value of the t queryparam from 1 to 20 to exercise the various tests.
+You can vary the value of the t queryparam from 1 to 99 to exercise the various tests.
+(Not all of those numbers correspond to tests.)
 
 
 ## Hints on using functions within Message Templates
@@ -103,7 +111,8 @@ When constructing your own function expressions, here are some rules to follow:
 
    NOT OK:  `{ createUuid( ) }`
 
-2. If there are arguments, and some are numeric, use variables.
+2. If there are arguments, use variables, or use
+  `<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>`.
 
    OK: `{randomLong(plus_10)}`
 
@@ -124,17 +133,31 @@ When constructing your own function expressions, here are some rules to follow:
    </AssignMessage>
    ```
 
+
+   OK, if you use `IgnoreUnresolvedVariables` set to `true`: `{randomLong(10,1000)}`
+
+   Like this:
+   ```
+   <AssignMessage name='AM-FormattedTime'>
+     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables> <!-- note -->
+     <AssignVariable>
+       <Name>assigned</Name>
+       <Template>{randomLong(10,1000)}</Template>
+     </AssignVariable>
+   </AssignMessage>
+   ```
+
 3. There must be no spaces between the enclosing parens and the arguments.
 
-   OK: `{randomLong(plus_10)}`
+   OK: `{randomLong(10)}`
 
-   NOT OK: `{randomLong( plus_10 )}`
+   NOT OK: `{randomLong( 10 )}`
 
 2. Use a comma and no spaces between multiple arguments.
 
-   OK: `{substring(alpha,zero,four)}`
+   OK: `{substring(alpha,0,4)}`
 
-   NOT OK: `{substring( alpha, zero, four )}`
+   NOT OK: `{substring( alpha, 0, 4 )}`
 
 2. Avoid invalid characters when specifying a time format string for `timeFormat` functions.
 
@@ -159,7 +182,7 @@ When constructing your own function expressions, here are some rules to follow:
      <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
      <AssignVariable>
        <Name>myformat</Name>
-       <Value>YYYYMM</Value>  << invalid
+       <Value>YYYYMM</Value>  << YYYY is not meaningful
      </AssignVariable>
      <AssignVariable>
        <Name>assigned</Name>
@@ -169,7 +192,7 @@ When constructing your own function expressions, here are some rules to follow:
    ```
 
 
-4. You cannot nest the function calls. Use separate Templates.
+4. You cannot nest the function calls. Use separate Templates, cascaded.
 
    OK:
    ```

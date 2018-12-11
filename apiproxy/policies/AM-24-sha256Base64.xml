@@ -1,0 +1,15 @@
+<AssignMessage name='AM-24-sha256Base64'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>abc_text</Name>
+    <Value>abc</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{sha256Base64(abc_text)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>sha256Base64({abc_text})</Template>
+  </AssignVariable>
+</AssignMessage>

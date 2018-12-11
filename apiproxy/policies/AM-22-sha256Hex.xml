@@ -1,4 +1,4 @@
-<AssignMessage name='AM-17'>
+<AssignMessage name='AM-22-sha256Hex'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
     <Name>abc_text</Name>

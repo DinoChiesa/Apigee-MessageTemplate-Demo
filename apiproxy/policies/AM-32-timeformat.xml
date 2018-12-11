@@ -1,8 +1,8 @@
-<AssignMessage name='AM-2'>
+<AssignMessage name='AM-32-timeformat'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
     <Name>timeFormatString1</Name>
-    <Value>yyyyMMdd-HHmmss</Value>
+    <Value>EEEE</Value>
   </AssignVariable>
   <AssignVariable>
     <Name>assigned</Name>

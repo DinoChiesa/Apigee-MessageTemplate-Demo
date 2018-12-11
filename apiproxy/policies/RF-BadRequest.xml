@@ -2,10 +2,13 @@
   <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
   <FaultResponse>
     <Set>
+      <Headers>
+        <Header name='system.uuid'>{system.uuid}</Header>
+      </Headers>
       <Payload contentType='application/json'>{
   "error" : {
     "code" : 400.01,
-    "message" : "Bad request. Pass a query param t with value [1...20]"
+    "message" : "Bad request. Pass a query param t with a valid value"
   }
 }
 </Payload>

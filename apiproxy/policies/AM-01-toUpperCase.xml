@@ -1,11 +1,11 @@
-<AssignMessage name='AM-12'>
+<AssignMessage name='AM-01-toUpperCase'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
     <Name>assigned</Name>
-    <Template>{xeger('[0-9]{12}')}</Template>
+    <Template>{toUpperCase(messageid)}</Template>
   </AssignVariable>
   <AssignVariable>
     <Name>casename</Name>
-    <Value>xeger('[0-9]{12}')</Value>
+    <Template>toUpperCase({messageid})</Template>
   </AssignVariable>
 </AssignMessage>

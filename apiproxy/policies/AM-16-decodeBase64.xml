@@ -1,0 +1,15 @@
+<AssignMessage name='AM-16-decodeBase64'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>encoded_value</Name>
+    <Value>VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{decodeBase64(encoded_value)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>decodeBase64({encoded_value})</Template>
+  </AssignVariable>
+</AssignMessage>

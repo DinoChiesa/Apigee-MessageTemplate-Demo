@@ -1,4 +1,4 @@
-<AssignMessage name='AM-18'>
+<AssignMessage name='AM-52-escapeXML11'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
     <Name>text_with_escapable_xml_entities</Name>

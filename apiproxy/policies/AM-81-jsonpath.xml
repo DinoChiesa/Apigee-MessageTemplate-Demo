@@ -1,0 +1,28 @@
+<AssignMessage name='AM-81-jsonpath'>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>json_value_1</Name>
+    <Value>{
+  "results" : [
+    { "address" : { "line1" : "55 Park Avenue", "zip" : "10016" }, "name" : "Fred Meyer" },
+    { "address" : { "line1" : "351 Farmington Ave", "zip" : "06105" }, "name" : "Mark Twain" },
+    { "address" : { "line1" : "1060 West Addison Street", "zip" : "60613" }, "name" : "Mae West" }
+  ]
+}</Value>
+  </AssignVariable>
+
+  <AssignVariable>
+    <Name>json_path_1</Name>
+    <Value>$.results[?(@.name == 'Mae West')][0].address.line1</Value>
+  </AssignVariable>
+
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Value>BADDBEEF</Value>
+    <Template>{jsonPath($.results[?(@.name == 'Mae West')][0].address.line1,json_value_1)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>jsonPath({json_path_1}, json_value_1))</Template>
+  </AssignVariable>
+</AssignMessage>

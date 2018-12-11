@@ -1,11 +1,11 @@
-<AssignMessage name='AM-11'>
+<AssignMessage name='AM-12-xeger'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
     <Name>assigned</Name>
-    <Template>{createUuid()}</Template>
+    <Template>{xeger('[0-9]{12}')}</Template>
   </AssignVariable>
   <AssignVariable>
     <Name>casename</Name>
-    <Value>createUuid()</Value>
+    <Value>xeger('[0-9]{12}')</Value>
   </AssignVariable>
 </AssignMessage>

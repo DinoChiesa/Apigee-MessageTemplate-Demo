@@ -1,4 +1,4 @@
-<AssignMessage name='AM-4'>
+<AssignMessage name='AM-33-timeformat'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
     <Name>timestring</Name>

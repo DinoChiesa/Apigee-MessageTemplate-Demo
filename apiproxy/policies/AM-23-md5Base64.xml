@@ -1,15 +1,15 @@
-<AssignMessage name='AM-3'>
+<AssignMessage name='AM-23-md5Base64'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
-    <Name>timeFormatString1</Name>
-    <Value>EEEE</Value>
+    <Name>abc_text</Name>
+    <Value>abc</Value>
   </AssignVariable>
   <AssignVariable>
     <Name>assigned</Name>
-    <Template>{timeFormatUTCMs(timeFormatString1,system.timestamp)}</Template>
+    <Template>{md5Base64(abc_text)}</Template>
   </AssignVariable>
   <AssignVariable>
     <Name>casename</Name>
-    <Template>timeFormatUTCMs({timeFormatString1},system.timestamp)</Template>
+    <Template>md5Base64({abc_text})</Template>
   </AssignVariable>
 </AssignMessage>

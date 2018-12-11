@@ -1,4 +1,4 @@
-<AssignMessage name='AM-14'>
+<AssignMessage name='AM-91-multiplevars'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
     <Name>assigned</Name>

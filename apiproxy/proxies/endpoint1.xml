@@ -10,9 +10,6 @@
 
   <PreFlow name="PreFlow">
     <Request>
-        <Step>
-          <Name>AM-Bellwether</Name>
-        </Step>
     </Request>
     <Response>
       <Step>
@@ -38,6 +35,9 @@
     <Flow name="flow1">
       <Request>
         <Step>
+          <Name>AM-Bellwether</Name>
+        </Step>
+        <Step>
           <Condition>bellwether = null</Condition>
           <Name>RF-Unsupported</Name>
         </Step>
@@ -47,84 +47,128 @@
         </Step>
         <Step>
           <Condition>request.queryparam.t = "1"</Condition>
-          <Name>AM-1</Name>
+          <Name>AM-01-toUpperCase</Name>
         </Step>
         <Step>
           <Condition>request.queryparam.t = "2"</Condition>
-          <Name>AM-2</Name>
-        </Step>
-        <Step>
-          <Condition>request.queryparam.t = "3"</Condition>
-          <Name>AM-3</Name>
-        </Step>
-        <Step>
-          <Condition>request.queryparam.t = "4"</Condition>
-          <Name>AM-4</Name>
-        </Step>
-        <Step>
-          <Condition>request.queryparam.t = "5"</Condition>
-          <Name>AM-5</Name>
+          <Name>AM-02-toLowerCase</Name>
         </Step>
         <Step>
           <Condition>request.queryparam.t = "6"</Condition>
-          <Name>AM-6</Name>
+          <Name>AM-06-substring</Name>
         </Step>
         <Step>
           <Condition>request.queryparam.t = "7"</Condition>
-          <Name>AM-7</Name>
+          <Name>AM-07-substring</Name>
         </Step>
         <Step>
           <Condition>request.queryparam.t = "8"</Condition>
-          <Name>AM-8</Name>
+          <Name>AM-08-substring</Name>
         </Step>
         <Step>
           <Condition>request.queryparam.t = "9"</Condition>
-          <Name>AM-9</Name>
+          <Name>AM-09-substring</Name>
         </Step>
-        <Step>
-          <Condition>request.queryparam.t = "10"</Condition>
-          <Name>AM-10</Name>
-        </Step>
+
         <Step>
           <Condition>request.queryparam.t = "11"</Condition>
-          <Name>AM-11</Name>
+          <Name>AM-11-createUuid</Name>
         </Step>
         <Step>
           <Condition>request.queryparam.t = "12"</Condition>
-          <Name>AM-12</Name>
+          <Name>AM-12-xeger</Name>
         </Step>
         <Step>
           <Condition>request.queryparam.t = "13"</Condition>
-          <Name>AM-13</Name>
+          <Name>AM-13-replaceFirst</Name>
         </Step>
         <Step>
           <Condition>request.queryparam.t = "14"</Condition>
-          <Name>AM-14</Name>
+          <Name>AM-14-replaceAll</Name>
         </Step>
         <Step>
           <Condition>request.queryparam.t = "15"</Condition>
-          <Name>AM-15</Name>
+          <Name>AM-15-encodeBase64</Name>
         </Step>
         <Step>
           <Condition>request.queryparam.t = "16"</Condition>
-          <Name>AM-16</Name>
+          <Name>AM-16-decodeBase64</Name>
+        </Step>
+
+        <Step>
+          <Condition>request.queryparam.t = "21"</Condition>
+          <Name>AM-21-md5Hex</Name>
         </Step>
         <Step>
-          <Condition>request.queryparam.t = "17"</Condition>
-          <Name>AM-17</Name>
+          <Condition>request.queryparam.t = "22"</Condition>
+          <Name>AM-22-sha256Hex</Name>
         </Step>
         <Step>
-          <Condition>request.queryparam.t = "18"</Condition>
-          <Name>AM-18</Name>
+          <Condition>request.queryparam.t = "23"</Condition>
+          <Name>AM-23-md5Base64</Name>
         </Step>
         <Step>
-          <Condition>request.queryparam.t = "19"</Condition>
-          <Name>AM-19</Name>
+          <Condition>request.queryparam.t = "24"</Condition>
+          <Name>AM-24-sha256Base64</Name>
+        </Step>
+
+        <Step>
+          <Condition>request.queryparam.t = "31"</Condition>
+          <Name>AM-31-timeformat</Name>
         </Step>
         <Step>
-          <Condition>request.queryparam.t = "20"</Condition>
-          <Name>AM-20</Name>
+          <Condition>request.queryparam.t = "32"</Condition>
+          <Name>AM-32-timeformat</Name>
         </Step>
+        <Step>
+          <Condition>request.queryparam.t = "33"</Condition>
+          <Name>AM-33-timeformat</Name>
+        </Step>
+
+        <Step>
+          <Condition>request.queryparam.t = "41"</Condition>
+          <Name>AM-41-randomLong</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "42"</Condition>
+          <Name>AM-42-randomLong</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "43"</Condition>
+          <Name>AM-43-randomLong</Name>
+        </Step>
+
+        <Step>
+          <Condition>request.queryparam.t = "51"</Condition>
+          <Name>AM-51-escapeXML</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "52"</Condition>
+          <Name>AM-52-escapeXML11</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "53"</Condition>
+          <Name>AM-53-escapeJSON</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "54"</Condition>
+          <Name>AM-54-escapeHTML</Name>
+        </Step>
+
+        <Step>
+          <Condition>request.queryparam.t = "81"</Condition>
+          <Name>AM-81-jsonpath</Name>
+        </Step>
+
+        <Step>
+          <Condition>request.queryparam.t = "91"</Condition>
+          <Name>AM-91-multiplevars</Name>
+        </Step>
+        <Step>
+          <Condition>request.queryparam.t = "92"</Condition>
+          <Name>AM-92-cascading</Name>
+        </Step>
+
         <Step>
           <Condition>assigned = null</Condition>
           <Name>RF-BadRequest</Name>

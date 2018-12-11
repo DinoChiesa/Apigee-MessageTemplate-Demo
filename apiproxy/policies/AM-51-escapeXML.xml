@@ -1,0 +1,15 @@
+<AssignMessage name='AM-51-escapeXML'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>text_with_escapable_xml_entities</Name>
+    <Value><![CDATA[<apple> 'orange' & "banana"]]></Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{escapeXML(text_with_escapable_xml_entities)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>escapeXML({escapeJSON(text_with_escapable_xml_entities)})</Template>
+  </AssignVariable>
+</AssignMessage>

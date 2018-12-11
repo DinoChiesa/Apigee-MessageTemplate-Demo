@@ -1,0 +1,15 @@
+<AssignMessage name='AM-21-md5Hex'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>abc_text</Name>
+    <Value>abc</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{md5Hex(abc_text)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>md5Hex({abc_text})</Template>
+  </AssignVariable>
+</AssignMessage>

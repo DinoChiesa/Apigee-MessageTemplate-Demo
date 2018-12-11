@@ -1,0 +1,11 @@
+<AssignMessage name='AM-43-randomLong'>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{randomLong()}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>randomLong()</Template>
+  </AssignVariable>
+</AssignMessage>

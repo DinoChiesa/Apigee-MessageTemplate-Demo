@@ -1,0 +1,19 @@
+<AssignMessage name='AM-31-timeformat'>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>timeFormatString1</Name>
+    <Value>yyyyMMdd-HHmmss</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>isoFormatString</Name>
+    <Value>yyyy-MM-dd'T'HH:mm'Z'</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{timeFormatUTCMs(isoFormatString,system.timestamp)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>timeFormatUTCMs({isoFormatString},system.timestamp)</Template>
+  </AssignVariable>
+</AssignMessage>

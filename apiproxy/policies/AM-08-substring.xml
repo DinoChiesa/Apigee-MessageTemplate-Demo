@@ -1,0 +1,17 @@
+<AssignMessage name='AM-08-substring'>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>alpha</Name>
+    <Value>abcdefghijklmnopqrstuvwxyz</Value>
+  </AssignVariable>
+
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{substring(alpha,0,-4)}</Template>
+  </AssignVariable>
+
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>substring('{alpha}', 0, -4)</Template>
+  </AssignVariable>
+</AssignMessage>

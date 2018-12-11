@@ -1,4 +1,4 @@
-<AssignMessage name='AM-19'>
+<AssignMessage name='AM-53-escapeJSON'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
     <Name>text_with_quotes</Name>

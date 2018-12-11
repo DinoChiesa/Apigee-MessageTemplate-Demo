@@ -1,11 +1,11 @@
-<AssignMessage name='AM-1'>
+<AssignMessage name='AM-13-replaceFirst'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
     <Name>assigned</Name>
-    <Template>{toUpperCase(messageid)}</Template>
+    <Template>{replaceFirst(messageid,'[0-9]','X')}</Template>
   </AssignVariable>
   <AssignVariable>
     <Name>casename</Name>
-    <Template>toUpperCase({messageid})</Template>
+    <Value>replaceFirst(messageid, '[0-9]', 'X')</Value>
   </AssignVariable>
 </AssignMessage>

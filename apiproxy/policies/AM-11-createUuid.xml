@@ -1,0 +1,11 @@
+<AssignMessage name='AM-11-createUuid'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template>{createUuid()}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>casename</Name>
+    <Value>createUuid()</Value>
+  </AssignVariable>
+</AssignMessage>

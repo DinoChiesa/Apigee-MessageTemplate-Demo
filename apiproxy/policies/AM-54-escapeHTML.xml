@@ -1,15 +1,15 @@
-<AssignMessage name='AM-16'>
+<AssignMessage name='AM-54-escapeHTML'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
-    <Name>abc_text</Name>
-    <Value>abc</Value>
+    <Name>text_</Name>
+    <Value>Everyone knows that 5 + 5 &lt; 88</Value>
   </AssignVariable>
   <AssignVariable>
     <Name>assigned</Name>
-    <Template>{sha256Base64(abc_text)}</Template>
+    <Template>{escapeHTML(text_)}</Template>
   </AssignVariable>
   <AssignVariable>
     <Name>casename</Name>
-    <Template>sha256Base64({abc_text})</Template>
+    <Template>escapeHTML(text_)</Template>
   </AssignVariable>
 </AssignMessage>
