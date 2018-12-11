@@ -76,7 +76,7 @@ The attached proxy shows examples using these functions:
 * [escapeXML](./apiproxy/policies/AM-51-escapeXML.xml)
 * [escapeXML11](./apiproxy/policies/AM-52-escapeXML11.xml
 * [escapeJSON](./apiproxy/policies/AM-53-escapeJSON.xml)
-* [escapeHTML](./apiproxy/policies/AM-54-escapeHTML.xml)
+* [encodeHTML](./apiproxy/policies/AM-54-encodeHTML.xml)
 * [jsonPath](./apiproxy/policies/AM-81-jsonpath.xml)
 
 To use the proxy you need to deploy it into your environment.  You can do that by manually zipping up the apiproxy directory and deploying it with the UI, or use a command-line tool like

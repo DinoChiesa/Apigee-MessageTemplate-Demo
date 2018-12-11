@@ -1,4 +1,4 @@
-<AssignMessage name='AM-54-escapeHTML'>
+<AssignMessage name='AM-54-encodeHTML'>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
   <AssignVariable>
     <Name>text_</Name>
@@ -6,10 +6,10 @@
   </AssignVariable>
   <AssignVariable>
     <Name>assigned</Name>
-    <Template>{escapeHTML(text_)}</Template>
+    <Template>{encodeHTML(text_)}</Template>
   </AssignVariable>
   <AssignVariable>
     <Name>casename</Name>
-    <Template>escapeHTML(text_)</Template>
+    <Template>encodeHTML(text_)</Template>
   </AssignVariable>
 </AssignMessage>

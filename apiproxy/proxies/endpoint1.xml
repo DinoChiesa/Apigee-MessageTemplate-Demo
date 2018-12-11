@@ -152,7 +152,7 @@
         </Step>
         <Step>
           <Condition>request.queryparam.t = "54"</Condition>
-          <Name>AM-54-escapeHTML</Name>
+          <Name>AM-54-encodeHTML</Name>
         </Step>
 
         <Step>
