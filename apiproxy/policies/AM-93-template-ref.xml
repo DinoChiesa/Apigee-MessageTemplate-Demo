@@ -1,0 +1,19 @@
+<AssignMessage name='AM-93-template-ref'>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+
+  <AssignVariable>
+    <Name>mytemplate</Name>
+    <Value>{timeFormatUTCMs(yyyy.MMMM.dd,system.timestamp)}</Value>
+  </AssignVariable>
+
+  <AssignVariable>
+    <Name>assigned</Name>
+    <Template ref='mytemplate'/>
+  </AssignVariable>
+
+  <AssignVariable>
+    <Name>casename</Name>
+    <Template>template with reference to variable</Template>
+  </AssignVariable>
+
+</AssignMessage>

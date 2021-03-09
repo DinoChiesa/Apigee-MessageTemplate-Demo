@@ -168,6 +168,10 @@
           <Condition>request.queryparam.t = "92"</Condition>
           <Name>AM-92-cascading</Name>
         </Step>
+        <Step>
+          <Condition>request.queryparam.t = "93"</Condition>
+          <Name>AM-93-template-ref</Name>
+        </Step>
 
         <Step>
           <Condition>assigned = null</Condition>

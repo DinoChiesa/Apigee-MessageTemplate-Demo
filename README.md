@@ -1,8 +1,8 @@
-# Apigee Edge - Message Templates and functions
+# Apigee - Message Templates and functions
 
-This API proxy demonstrates how to use the new capability in the Message Template within Apigee Edge, specifically the functions available within Message templates.
+This API proxy demonstrates how to use the new capability in the Message Template within Apigee, specifically the functions available within Message Templates.
 
-[Message Templates](https://docs.apigee.com/api-platform/reference/message-template-intro) in Apigee Edge are used in numerous places - for the Payload within an AssignMessage policy, as well as in other elements.
+[Message Templates](https://docs.apigee.com/api-platform/reference/message-template-intro) in Apigee are used in numerous places - for the Payload within an AssignMessage policy, as well as in other elements.
 
 - Message Templates have been enhanced to support functions
 - the AssignMessage policy has now been enhanced to accept a template when assigning a value to a variable
@@ -70,17 +70,18 @@ The attached proxy shows examples using these functions:
 * [md5Hex](./apiproxy/policies/AM-21-md5Hex.xml)
 * [sha256Hex](./apiproxy/policies/AM-22-sha256Hex.xml)
 * [md5Base64](./apiproxy/policies/AM-23-md5Base64.xml)
-* [sha256Base64](./apiproxy/policies/AM-24-sha256Base64.xml
-* [timeFormatUTCMs](./apiproxy/policies/AM-31-timeformat.xml),[timeFormatUTC](./apiproxy/policies/AM-33-timeformat.xml)
+* [sha256Base64](./apiproxy/policies/AM-24-sha256Base64.xml)
+* [timeFormatUTCMs](./apiproxy/policies/AM-31-timeformat.xml)
+* [timeFormatUTC](./apiproxy/policies/AM-33-timeformat.xml)
 * [randomLong](./apiproxy/policies/AM-41-randomLong.xml)
 * [escapeXML](./apiproxy/policies/AM-51-escapeXML.xml)
-* [escapeXML11](./apiproxy/policies/AM-52-escapeXML11.xml
+* [escapeXML11](./apiproxy/policies/AM-52-escapeXML11.xml)
 * [escapeJSON](./apiproxy/policies/AM-53-escapeJSON.xml)
 * [encodeHTML](./apiproxy/policies/AM-54-encodeHTML.xml)
 * [jsonPath](./apiproxy/policies/AM-81-jsonpath.xml)
 
 To use the proxy you need to deploy it into your environment.  You can do that by manually zipping up the apiproxy directory and deploying it with the UI, or use a command-line tool like
-[importAndDeploy.js](https://github.com/DinoChiesa/apigee-edge-js/blob/master/examples/importAndDeploy.js)
+[importAndDeploy.js](https://github.com/DinoChiesa/apigee-edge-js-examples/blob/master/importAndDeploy.js)
 or Powershell's [Import-EdgeApi](https://github.com/DinoChiesa/Edge-Powershell-Admin/blob/develop/PSApigeeEdge/Public/Import-EdgeApi.ps1)
 or similar, to deploy the proxy.
 
@@ -112,37 +113,53 @@ When constructing your own function expressions, here are some rules to follow:
    NOT OK:  `{ createUuid( ) }`
 
 2. If there are arguments, use variables, or use
-  `<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>`.
+   `<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>`.
+  
+   For the following table, assume `plus10` has been assigned the value `10`.
+  
+   | `IgnoreUnresolvedVariables` | formula                 | ok?  |
+   | --------------------------- | ----------------------- | ---- |
+   | true                        | `{randomLong(10)}`      |  Y   |
+   | true                        | `{randomLong(plus10)}`  |  Y   |
+   | false                       | `{randomLong(10)}`      |  N   |
+   | false                       | `{randomLong(plus10)}`  |  Y   |
 
-   OK: `{randomLong(plus_10)}`
-
-   NOT OK: `{randomLong(10)}`
-
-   To assist with this, just use a preceding AssignVariable with a Value element in the AssignMessage policy.
-   ```
-   <AssignMessage name='AM-FormattedTime'>
-     <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
-     <AssignVariable>
-       <Name>plus_10</Name>
-       <Value>10</Value>
-     </AssignVariable>
-     <AssignVariable>
-       <Name>assigned</Name>
-       <Template>{randomLong(plus_10)}</Template>
-     </AssignVariable>
-   </AssignMessage>
-   ```
-
-
-   OK, if you use `IgnoreUnresolvedVariables` set to `true`: `{randomLong(10,1000)}`
-
-   Like this:
+   For example, this will work:
    ```
    <AssignMessage name='AM-FormattedTime'>
      <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables> <!-- note -->
      <AssignVariable>
        <Name>assigned</Name>
        <Template>{randomLong(10,1000)}</Template>
+     </AssignVariable>
+   </AssignMessage>
+   ```
+   
+   This will not work:
+   ```
+   <AssignMessage name='AM-FormattedTime'>
+     <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables> <!-- note -->
+     <AssignVariable>
+       <Name>assigned</Name>
+       <Template>{randomLong(10,1000)}</Template>
+     </AssignVariable>
+   </AssignMessage>
+   ```
+
+   If you do wish to have `IgnoreUnresolvedVariables` as `false`, then, you can
+   use a preceding AssignVariable with a Value element in the AssignMessage
+   policy, to set a variable to hold a constant. Like this:
+   
+   ```
+   <AssignMessage name='AM-FormattedTime'>
+     <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+     <AssignVariable>
+       <Name>plus10</Name>
+       <Value>10</Value>
+     </AssignVariable>
+     <AssignVariable>
+       <Name>assigned</Name>
+       <Template>{randomLong(plus10)}</Template>
      </AssignVariable>
    </AssignMessage>
    ```
@@ -182,7 +199,7 @@ When constructing your own function expressions, here are some rules to follow:
      <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
      <AssignVariable>
        <Name>myformat</Name>
-       <Value>YYYYMM</Value>  << YYYY is not meaningful
+       <Value>YYYYMM</Value>  <!-- YYYY is not meaningful -->
      </AssignVariable>
      <AssignVariable>
        <Name>assigned</Name>
@@ -192,7 +209,7 @@ When constructing your own function expressions, here are some rules to follow:
    ```
 
 
-4. You cannot nest the function calls. Use separate Templates, cascaded.
+4. You cannot nest the function calls. Use separate, successive Templates. They are evaluated in order.
 
    OK:
    ```
@@ -226,5 +243,20 @@ When constructing your own function expressions, here are some rules to follow:
        <Template>{toLowerCase(timeFormatUTCMs(myformat,system.timestamp))}</Template>
      </AssignVariable>
    </AssignMessage>
+   ```
+
+5. If you specify an invalid function, like `{invalidFunction(xyz)}`, your proxy will not deploy successfully. You will see the status `entities.UnknownStringFunction`, if you query the deployments, like this:
+
+   ```
+    "server" : [ {
+        "error" : "entities.UnknownStringFunction",
+        "pod" : {
+          "name" : "flk682-1",
+          "region" : "us-west1"
+        },
+        "status" : "error",
+        "type" : [ "message-processor" ],
+        "uUID" : "af125932-4d07-4be7-ae1c-57e7d7a5934f"
+      }
    ```
 
