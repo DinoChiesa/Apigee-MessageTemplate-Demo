@@ -96,6 +96,41 @@ curl -i https://$ORG-$ENV.apigee.net/assignvariable-1/test?t=1
 You can vary the value of the t queryparam from 1 to 99 to exercise the various tests.
 (Not all of those numbers correspond to tests.)
 
+For example,
+
+```
+$ curl -i https://$ORG-$ENV.apigee.net/messagetemplate-functions/test?t=93
+HTTP/1.1 200 OK
+Date: Tue, 09 Mar 2021 18:22:12 GMT
+Content-Type: application/json
+Content-Length: 108
+Connection: keep-alive
+APIProxy: messagetemplate-functions v8
+system.uuid: cfc56ec0-8eaf-452b-ab1b-1b15fc29f837
+
+{
+    "status" : "ok",
+    "case" : "template with reference to variable",
+    "assigned": "2021.March.09"
+}
+
+
+$ curl -i https://$ORG-$ENV.apigee.net/messagetemplate-functions/test?t=92
+HTTP/1.1 200 OK
+Date: Tue, 09 Mar 2021 18:22:29 GMT
+Content-Type: application/json
+Content-Length: 118
+Connection: keep-alive
+APIProxy: messagetemplate-functions v8
+system.uuid: c9c403c2-32ad-4476-ba82-4a39405ed63e
+
+{
+    "status" : "ok",
+    "case" : "cascading timeFormatUTCMs() and toLowerCase()",
+    "assigned": "2021.march.09"
+}
+
+```
 
 ## Hints on using functions within Message Templates
 
@@ -114,9 +149,9 @@ When constructing your own function expressions, here are some rules to follow:
 
 2. If there are arguments, use variables, or use
    `<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>`.
-  
+
    For the following table, assume `plus10` has been assigned the value `10`.
-  
+
    | `IgnoreUnresolvedVariables` | formula                 | ok?  |
    | --------------------------- | ----------------------- | ---- |
    | true                        | `{randomLong(10)}`      |  Y   |
@@ -134,7 +169,7 @@ When constructing your own function expressions, here are some rules to follow:
      </AssignVariable>
    </AssignMessage>
    ```
-   
+
    This will not work:
    ```
    <AssignMessage name='AM-FormattedTime'>
@@ -149,7 +184,7 @@ When constructing your own function expressions, here are some rules to follow:
    If you do wish to have `IgnoreUnresolvedVariables` as `false`, then, you can
    use a preceding AssignVariable with a Value element in the AssignMessage
    policy, to set a variable to hold a constant. Like this:
-   
+
    ```
    <AssignMessage name='AM-FormattedTime'>
      <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
@@ -259,4 +294,3 @@ When constructing your own function expressions, here are some rules to follow:
         "uUID" : "af125932-4d07-4be7-ae1c-57e7d7a5934f"
       }
    ```
-
